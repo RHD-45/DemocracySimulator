@@ -19,6 +19,7 @@ public class PlayerClickToMove : MonoBehaviour
         {
             targetPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             targetPosition.z = transform.position.z;
+            Debug.Log("here");
         }
         mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     }
