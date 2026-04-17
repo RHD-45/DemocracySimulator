@@ -4336,6 +4336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27e8ea5b6ea5b04cb774c09d682445d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  enemy: {fileID: 1657090612905517152, guid: 3252e4fecff084940988fe50bc60dace, type: 3}
   enemyMoveSpeed: 1
 --- !u!114 &548020528
 MonoBehaviour:

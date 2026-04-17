@@ -23,7 +23,7 @@ public class BombSpawner : MonoBehaviour
         {
             //-----------REMOVE BOMB--------------------------------------------------
             GameObject[] allBombs = GameObject.FindGameObjectsWithTag("Bomb");
-            foreach(GameObject obj in allBombs)
+            foreach (GameObject obj in allBombs)
             {
                 Destroy(obj);
             }

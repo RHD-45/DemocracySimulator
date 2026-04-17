@@ -1,12 +1,18 @@
-using Unity.Mathematics;
 using UnityEngine;
+//using Unity.Mathematics;
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] GameObject enemy;
     private float health = 100f;
     private float currentHp;
     [SerializeField] private float enemyMoveSpeed = 1f; 
     private PlayerClickToMove player;
     private int enemyDmg = 10;
+    private int enemyCheck = 1;
+    float topPoint = 2.2f;
+    float bottomPoint = -2.2f;
+    float leftPoint = -5.3f;
+    float rightPoint = 5.3f;
     public void OnTriggerEnter2D(Collider2D collision)
      {
         if(collision.gameObject.CompareTag("Player"))
@@ -22,8 +28,7 @@ public class Enemy : MonoBehaviour
      public void TakeDamage(float damage)
      {
          currentHp-=damage;
-         currentHp = math.max(0,currentHp);
-         if (currentHp <= 0)
+        if (currentHp <= 0)
          {
              Die();
          }
@@ -43,10 +48,20 @@ public class Enemy : MonoBehaviour
             transform.localScale= new Vector3(player.transform.position.x<transform.position.x ? -1 : 1,1,1);
         }
     }
-      void Die()
-     {
-         Destroy(gameObject); 
-     }
+    void Die()
+    {
+             
+        if (enemyCheck < 3)
+        {
+            enemyCheck++;
+            SpawnEnemy();
+        }
+        Destroy(enemy);  
+    }
+    void SpawnEnemy()
+    {
+        Instantiate(enemy, new Vector3(Random.Range(leftPoint, rightPoint), Random.Range(topPoint, bottomPoint), 0), transform.rotation);
+    }
     void Update()
     {
         MoveToPlayer();
