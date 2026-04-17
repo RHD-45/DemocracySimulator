@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
             enemyCheck++;
             SpawnEnemy();
         }
-        Destroy(enemy);  
+        Destroy(gameObject);  
     }
     void SpawnEnemy()
     {
