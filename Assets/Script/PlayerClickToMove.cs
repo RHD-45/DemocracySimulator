@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-
+using Unity.Mathematics;
 public class PlayerClickToMove : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2.5f;
@@ -9,15 +9,16 @@ public class PlayerClickToMove : MonoBehaviour
     private Rigidbody2D rb;
     Vector2 mousePos;
     private Animator animator;
+    private SpriteRenderer sr;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
     void Start()
     {
         targetPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
     void Update()
     {
@@ -36,5 +37,14 @@ public class PlayerClickToMove : MonoBehaviour
         //rb.rotation = angle;
         Vector2 newPosition = Vector2.MoveTowards(rb.position, targetPosition, moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPosition);
+        float dis = Vector2.Distance(targetPosition,rb.position);
+        if(dis>0.1f) {
+            animator.SetBool("isRun",true);
+        } else {
+            animator.SetBool("isRun",false);
+        }
+        if(targetPosition.x < rb.position.x){
+            sr.flipX = true;
+        } else sr.flipX = false;
     }
 }
