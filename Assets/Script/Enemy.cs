@@ -2,16 +2,16 @@ using Unity.Mathematics;
 using UnityEngine;
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]public float health = 100f;
+    private float health = 100f;
     private float currentHp;
     [SerializeField] private float enemyMoveSpeed = 1f; 
     private PlayerClickToMove player;
+    private int enemyDmg = 10;
     public void OnTriggerEnter2D(Collider2D collision)
      {
         if(collision.gameObject.CompareTag("Player"))
          {
-            PlayerHP healthScript = collision.gameObject.GetComponent<PlayerHP>();
-             if(healthScript!=null) healthScript.TakeDamage(10);
+            collision.gameObject.GetComponent<PlayerHP>().TakeDamage(enemyDmg); ;
          }
      } 
     void Start()

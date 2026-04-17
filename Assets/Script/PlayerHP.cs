@@ -31,7 +31,7 @@ public class PlayerHP : MonoBehaviour
     {
         Debug.Log("Player đã chết!");
         // game overrrrrrrr
-        gameObject.SetActive(false);
+        Destroy(transform.parent.gameObject);
     }
 
     public int GetCurrentHP() => currentHP;

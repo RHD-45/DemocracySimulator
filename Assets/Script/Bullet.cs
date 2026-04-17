@@ -6,9 +6,9 @@ public class Bullet : MonoBehaviour
     private Camera mainCam;
     private Vector3 mousePos;
     private Rigidbody2D rb;
-    private Rigidbody2D Enemy;
-    [SerializeField] private float force = 2f;
-    [SerializeField] private float timeDestroy = 0.5f;
+    //private Rigidbody2D Enemy;
+    private float force = 10f;
+    [SerializeField] private float timeDestroy = 6.5f;
     [SerializeField] private float damage = 10f;
     [SerializeField] private float moveSpeed = 25f;
     void Start()
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-        Destroy(gameObject,timeDestroy);
+        
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
     }
     void Update()
     {
-        
+        Destroy(gameObject, timeDestroy);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

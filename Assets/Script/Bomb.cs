@@ -15,18 +15,18 @@ public class Bomb : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("here");
+        //Debug.Log("here");
 	    if(other.gameObject.CompareTag("Enemy"))
 	    {
-            Destroy(other);
-            Debug.Log("Enemy touched Bomb");
+            other.gameObject.GetComponent<Enemy>().TakeDamage(bombDamage);
+            //Debug.Log("Enemy touched Bomb");
             animator.SetBool("Explode",true);
             
 	    }
         else if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerHP>().TakeDamage(bombDamage);
-            Debug.Log("Player touched Bomb");
+            //Debug.Log("Player touched Bomb");
             animator.SetBool("Explode",true);
         }
         

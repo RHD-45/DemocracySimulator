@@ -8,9 +8,8 @@ public class Rotate : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletTransform;
     [SerializeField] private Transform firePoint; // firepoint cua player, de xac dinh huong bay cua dan
-    public bool canFire;
-    private float Timer = 0f;
-    [SerializeField] private float timeBetweenFire = 2.5f;
+    private float fireRate = 0.5f; // thoi gian giua 2 lan ban
+    private float nextFireTime = 0f; // thoi gian tiep theo co the ban
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -24,20 +23,16 @@ public class Rotate : MonoBehaviour
         Vector3 rotation = mousePos - transform.position;
         float RotZ =  Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, RotZ);
-        if(!canFire)
+        if (Mouse.current.rightButton.wasPressedThisFrame && Time.time >= nextFireTime)
         {
-            Timer += Time.deltaTime;
-            if(Timer >= timeBetweenFire)
-            {
-                canFire = true;
-                Timer = 0;
-            }
+            Shoot();
+            nextFireTime = Time.time + fireRate;
+
+
         }
-        if (Mouse.current.rightButton.isPressed && canFire)
-        {
-            canFire = false;
-            Instantiate(bullet, firePoint.position, transform.rotation);
-            
-        }
+    }
+    void Shoot()
+    {
+        Instantiate(bullet, firePoint.position, transform.rotation);
     }
 }

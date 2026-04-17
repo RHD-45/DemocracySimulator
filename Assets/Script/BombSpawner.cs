@@ -30,7 +30,7 @@ public class BombSpawner : MonoBehaviour
             //------------SPAWN BOMB--------------------------------------------------
             for (int i = 0; i < spawnRate; ++i)
             {
-                Debug.Log("created");
+                //Debug.Log("created");
                 Instantiate(bomb, new Vector3(Random.Range(leftPoint,rightPoint), Random.Range(topPoint,bottomPoint), 0), transform.rotation);
             }
             timer = 0;
