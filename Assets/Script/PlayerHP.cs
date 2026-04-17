@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
     [Header("HP Settings")]
+    [SerializeField] Image healthBar;
     [SerializeField] private int maxHP = 100;
     private int currentHP;
 
@@ -16,6 +18,7 @@ public class PlayerHP : MonoBehaviour
     {
         currentHP -= dmg;
         Debug.Log($"Bị đánh! HP còn lại: {currentHP}");
+        healthBar.fillAmount = currentHP / 100f;
 
         if (currentHP <= 0)
         {
