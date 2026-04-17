@@ -1,5 +1,5 @@
 using UnityEngine;
-//using Unity.Mathematics;
+using Unity.Mathematics;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
     }
     void SpawnEnemy()
     {
-        Instantiate(enemy, new Vector3(Random.Range(leftPoint, rightPoint), Random.Range(topPoint, bottomPoint), 0), transform.rotation);
+        Instantiate(enemy, new Vector3(UnityEngine.Random.Range(leftPoint, rightPoint), UnityEngine.Random.Range(topPoint, bottomPoint), 0), transform.rotation);
     }
     void Update()
     {
