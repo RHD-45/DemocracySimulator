@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Image healthBar;
+    [SerializeField] ScoreManagement scoreManager;
     public EnemySpawner enemySpawner;
     private float health = 100f;
     private float currentHp;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
         player = FindAnyObjectByType<PlayerClickToMove>();
         currentHp = health;
         enemySpawner = FindAnyObjectByType<EnemySpawner>();
+        scoreManager = FindAnyObjectByType<ScoreManagement>();
     }
      public void TakeDamage(float damage)
      {
@@ -49,6 +51,7 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
+        scoreManager.addScore();
         enemySpawner.SpawnEnemy();
         Destroy(gameObject);
     }
