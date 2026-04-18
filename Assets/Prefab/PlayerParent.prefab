@@ -250,7 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHP
   healthBar: {fileID: 2009282912294088556}
-  maxHP: 1000
+  scoreManager: {fileID: 0}
+  maxHP: 200
 --- !u!1 &737723234356847288
 GameObject:
   m_ObjectHideFlags: 0

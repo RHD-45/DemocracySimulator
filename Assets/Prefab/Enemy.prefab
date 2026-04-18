@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   healthBar: {fileID: 1069149253197796261}
+  scoreManager: {fileID: 0}
   enemySpawner: {fileID: 0}
   enemyMoveSpeed: 1
 --- !u!1 &4562037257931459021

@@ -5,12 +5,14 @@ public class PlayerHP : MonoBehaviour
 {
     [Header("HP Settings")]
     [SerializeField] Image healthBar;
+    public ScoreManagement scoreManager;
     [SerializeField] private int maxHP = 100;
     private int currentHP;
 
     void Start()
     {
         currentHP = maxHP;
+        scoreManager = FindAnyObjectByType<ScoreManagement>();
         Debug.Log($"HP hiện tại: {currentHP}");
     }
 
@@ -18,7 +20,7 @@ public class PlayerHP : MonoBehaviour
     {
         currentHP -= dmg;
         Debug.Log($"Bị đánh! HP còn lại: {currentHP}");
-        healthBar.fillAmount = currentHP / 100f;
+        healthBar.fillAmount = 1f * currentHP / maxHP;
 
         if (currentHP <= 0)
         {
@@ -31,6 +33,7 @@ public class PlayerHP : MonoBehaviour
     {
         Debug.Log("Player đã chết!");
         // game overrrrrrrr
+        scoreManager.endGame();
         Destroy(transform.parent.gameObject);
     }
 
