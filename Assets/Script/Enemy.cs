@@ -1,18 +1,15 @@
 using UnityEngine;
 using Unity.Mathematics;
+using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
+    [SerializeField] Image healthBar;
+    public EnemySpawner enemySpawner;
     private float health = 100f;
     private float currentHp;
-    [SerializeField] private float enemyMoveSpeed = 1f; 
+    [SerializeField] public float enemyMoveSpeed = 0.5f; 
     private PlayerClickToMove player;
     private int enemyDmg = 10;
-    private int enemyCheck = 1;
-    float topPoint = 2.2f;
-    float bottomPoint = -2.2f;
-    float leftPoint = -5.3f;
-    float rightPoint = 5.3f;
     public void OnTriggerEnter2D(Collider2D collision)
      {
         if(collision.gameObject.CompareTag("Player"))
@@ -24,13 +21,15 @@ public class Enemy : MonoBehaviour
     {
         player = FindAnyObjectByType<PlayerClickToMove>();
         currentHp = health;
+        enemySpawner = FindAnyObjectByType<EnemySpawner>();
     }
      public void TakeDamage(float damage)
      {
          currentHp-=damage;
+         healthBar.fillAmount = currentHp / 100f;
         if (currentHp <= 0)
          {
-             Die();
+            Die();
          }
      }
     void MoveToPlayer()
@@ -50,18 +49,11 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-             
-        if (enemyCheck < 3)
-        {
-            enemyCheck++;
-            SpawnEnemy();
-        }
-        Destroy(gameObject);  
+        enemySpawner.SpawnEnemy();
+        Destroy(gameObject);
     }
-    void SpawnEnemy()
-    {
-        Instantiate(enemy, new Vector3(UnityEngine.Random.Range(leftPoint, rightPoint), UnityEngine.Random.Range(topPoint, bottomPoint), 0), transform.rotation);
-    }
+    
+
     void Update()
     {
         MoveToPlayer();

@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 using Unity.Mathematics;
 public class PlayerClickToMove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2.5f;
+    [SerializeField] private float moveSpeed = 3f;
     private Vector3 targetPosition;
     private Rigidbody2D rb;
     Vector2 mousePos;

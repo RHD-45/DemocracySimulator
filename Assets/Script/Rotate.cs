@@ -8,7 +8,7 @@ public class Rotate : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletTransform;
     [SerializeField] private Transform firePoint; // firepoint cua player, de xac dinh huong bay cua dan
-    private float fireRate = 0.5f; // thoi gian giua 2 lan ban
+    private float fireRate = 0.1f; // thoi gian giua 2 lan ban
     private float nextFireTime = 0f; // thoi gian tiep theo co the ban
     void Start()
     {

@@ -18,7 +18,7 @@ public class Bomb : MonoBehaviour
         //Debug.Log("here");
 	    if(other.gameObject.CompareTag("Enemy"))
 	    {
-            other.gameObject.GetComponent<Enemy>().TakeDamage(bombDamage);
+            other.gameObject.GetComponent<Enemy>().TakeDamage(1000);
             //Debug.Log("Enemy touched Bomb");
             animator.SetBool("Explode",true);
             

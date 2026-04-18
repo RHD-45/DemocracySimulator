@@ -7,6 +7,9 @@ TagManager:
   - Bullet
   - Enemy
   - Gun
+  - Bomb
+  - EnemySpawner
+  - Warning
   layers:
   - Default
   - TransparentFX
