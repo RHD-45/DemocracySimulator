@@ -12,6 +12,7 @@ TagManager:
   - Warning
   - Logic
   - Score
+  - Audio
   layers:
   - Default
   - TransparentFX

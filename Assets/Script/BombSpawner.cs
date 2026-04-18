@@ -4,7 +4,7 @@ public class BombSpawner : MonoBehaviour
 {
     [SerializeField] GameObject bomb;
     [SerializeField] float spawnTime = 5;
-    [SerializeField] float warningDuration = 2;
+    //[SerializeField] float warningDuration = 2;
     [SerializeField] float spawnRate = 3;
     private float timer = 0;
 
